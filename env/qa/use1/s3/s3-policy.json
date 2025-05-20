@@ -1,0 +1,35 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowFullAccessToOwner",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::650251684798:root"
+      },
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::my-test-lpb",
+        "arn:aws:s3:::my-test-lpb/*"
+      ]
+    },
+    {
+      "Sid": "DenyPublicRead",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::my-test-lpb",
+        "arn:aws:s3:::my-test-lpb/*"
+      ],
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "false"
+        }
+      }
+    }
+  ]
+}

@@ -3,10 +3,6 @@ variable "region" {
   type        = string
   default     = "us-east-1"  # optional if you're passing it via tfvars
 }
-variable "ami_id" {
-  description = "AMI ID to use for the EC2 instance"
-  type        = string
-}
 
 variable "instance_type" {
   description = "EC2 instance type"
